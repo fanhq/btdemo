@@ -1,11 +1,12 @@
 package com.fanhq.btdemo.jobs;
 
+import com.fanhq.btdemo.service.MyService;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
+import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by Hachel on 2018/1/25
@@ -19,17 +20,9 @@ public class ScheduledJob implements Job {
 
     @Override
     public void execute(JobExecutionContext context) {
-        while (true) {
-            System.out.println("begin: The time is now " + dateFormat().format(new Date()));
-            try {
-                System.out.println("before: The time is now " + dateFormat().format(new Date()));
-                Thread.sleep(10000);
-                System.out.println("after: The time is now " + dateFormat().format(new Date()));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("end: The time is now " + dateFormat().format(new Date()));
-        }
+        JobDataMap dataMap = context.getJobDetail().getJobDataMap();
+        MyService myService = (MyService)dataMap.get("myService");
+        myService.sayHello();
     }
 }
 

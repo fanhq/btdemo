@@ -1,6 +1,6 @@
 package com.fanhq.btdemo.scheduler;
 
-import com.fanhq.btdemo.jobs.QuartzJobSpring;
+import com.fanhq.btdemo.jobs.ScheduledJob;
 import com.fanhq.btdemo.service.MyService;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class MyScheduler {
         //任务
         JobDataMap dataMap = new JobDataMap();
         dataMap.put("myService", myService);
-        JobDetail jobDetail = JobBuilder.newJob(QuartzJobSpring.class)
+        JobDetail jobDetail = JobBuilder.newJob(ScheduledJob.class)
                 .withIdentity("job", "group").setJobData(dataMap).build();
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
         //触发器
