@@ -1,6 +1,7 @@
 package com.fanhq.btdemo.scheduler;
 
 import com.fanhq.btdemo.jobs.QuartzJobSpring;
+import com.fanhq.btdemo.service.MyService;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
@@ -15,6 +16,9 @@ public class MyScheduler {
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
 
+    @Autowired
+    private MyService myService;
+
 
     public void scheduleJobs() throws SchedulerException {
         //调度器
@@ -22,12 +26,15 @@ public class MyScheduler {
         startJob(scheduler);
     }
 
-    private void startJob(Scheduler scheduler) throws SchedulerException{
+    private void startJob(Scheduler scheduler) throws SchedulerException {
         //任务
-        JobDetail jobDetail = JobBuilder.newJob(QuartzJobSpring.class) .withIdentity("job", "group").build();
+        JobDataMap dataMap = new JobDataMap();
+        dataMap.put("myService", myService);
+        JobDetail jobDetail = JobBuilder.newJob(QuartzJobSpring.class)
+                .withIdentity("job", "group").setJobData(dataMap).build();
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
         //触发器
-        CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("trigger", "group") .withSchedule(scheduleBuilder).build();
-        scheduler.scheduleJob(jobDetail,cronTrigger);
+        CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("trigger", "group").withSchedule(scheduleBuilder).build();
+        scheduler.scheduleJob(jobDetail, cronTrigger);
     }
 }
