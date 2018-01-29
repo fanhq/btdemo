@@ -23,7 +23,7 @@ public class SchedulerListener implements ApplicationListener<ContextRefreshedEv
     public void onApplicationEvent(ContextRefreshedEvent event) {
         try {
             myScheduler.scheduleJobs();
-        } catch (SchedulerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
