@@ -11,7 +11,13 @@ import org.springframework.stereotype.Component;
 public class MyService3 implements MyService{
 
    public void say(){
-       System.out.println("MyService3");
+       System.out.println("MyService3 start");
+       try {
+           Thread.sleep(10000);
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+       System.out.println("MyService3 end");
    }
 
 }
