@@ -8,7 +8,7 @@ import org.quartz.*;
  */
 @DisallowConcurrentExecution
 @PersistJobDataAfterExecution
-public class ScheduledJob implements Job {
+public class QuartzJob implements Job {
     
 
     @Override
