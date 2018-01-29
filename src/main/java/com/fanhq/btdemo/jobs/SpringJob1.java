@@ -17,7 +17,7 @@ public class SpringJob1 {
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void job(){
-        System.out.println("SpringJob1");
+        System.out.println("SpringJob1.....");
         myService.say();
     }
 
