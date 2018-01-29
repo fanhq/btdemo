@@ -11,7 +11,7 @@ import org.quartz.JobExecutionContext;
  */
 @DisallowConcurrentExecution
 public class ScheduledJob implements Job {
-
+    
 
     @Override
     public void execute(JobExecutionContext context) {
