@@ -33,10 +33,10 @@ public class MyScheduler {
         JobDataMap dataMap = new JobDataMap();
         dataMap.put("myService", myService.get(0));
         JobDetail jobDetail = JobBuilder.newJob(ScheduledJob.class)
-                .withIdentity("job", "group").setJobData(dataMap).build();
+                .withIdentity("jobName").setJobData(dataMap).build();
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
         //触发器
-        CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("trigger", "group").withSchedule(scheduleBuilder).build();
+        CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("triggerName").withSchedule(scheduleBuilder).build();
         scheduler.scheduleJob(jobDetail, cronTrigger);
     }
 }
