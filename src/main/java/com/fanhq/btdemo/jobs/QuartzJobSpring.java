@@ -18,7 +18,7 @@ public class QuartzJobSpring extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         JobDataMap dataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         MyService1 myService = (MyService1)dataMap.get("myService");
-        myService.sayHello();
+        myService.say();
     }
 }
 

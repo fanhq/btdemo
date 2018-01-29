@@ -5,5 +5,5 @@ package com.fanhq.btdemo.service;
  */
 public interface MyService {
 
-    void sayHello();
+    void say();
 }

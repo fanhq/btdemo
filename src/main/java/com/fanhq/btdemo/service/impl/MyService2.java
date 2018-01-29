@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyService2 implements MyService {
 
-    public void sayHello(){
-        System.out.println("hi");
+    public void say(){
+        System.out.println("MyService2");
     }
 }

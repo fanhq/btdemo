@@ -15,7 +15,7 @@ public class ScheduledJob implements Job {
     public void execute(JobExecutionContext context) {
         JobDataMap dataMap = context.getJobDetail().getJobDataMap();
         MyService myService = (MyService)dataMap.get("myService");
-        myService.sayHello();
+        myService.say();
     }
 }
 

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class MyService1 implements MyService{
+public class MyService3 implements MyService{
 
    public void say(){
-       System.out.println("MyService1");
+       System.out.println("MyService3");
    }
 
 }
