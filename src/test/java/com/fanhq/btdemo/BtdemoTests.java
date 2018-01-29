@@ -1,7 +1,9 @@
 package com.fanhq.btdemo;
 
+import com.fanhq.btdemo.config.ProperiesConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -9,8 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes= {Application.class}, webEnvironment= SpringBootTest.WebEnvironment.NONE)
 public class BtdemoTests {
 
+	@Autowired
+	private ProperiesConfig properiesConfig;
+
 	@Test
 	public void contextLoads() {
+		System.out.println(properiesConfig.getName());
+		System.out.println(properiesConfig.getAddrMy());
 	}
 
 }
