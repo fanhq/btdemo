@@ -5,6 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * 获取spring容器中的bean
+ */
 @Component
 public class ApplicationContextUtil implements ApplicationContextAware {
     // Spring应用上下文环境
