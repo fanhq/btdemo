@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SpringJobs {
-
-
+public class SpringJob2 {
+    
     @Autowired
     private MyService3 myService;
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void job(){
+        System.out.println("SpringJob2");
         myService.say();
     }
 
