@@ -30,12 +30,21 @@ public class MyScheduler {
 
     private void startJob(Scheduler scheduler) throws SchedulerException {
         //任务
-        JobDataMap dataMap = new JobDataMap();
-        dataMap.put("myService", myService.get(0));
-        JobDetail jobDetail = JobBuilder.newJob(ScheduledJob.class).setJobData(dataMap).build();
+        JobDataMap dataMap1 = new JobDataMap();
+        dataMap1.put("myService", myService.get(0));
+        JobDetail jobDetail = JobBuilder.newJob(ScheduledJob.class).setJobData(dataMap1).build();
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
         //触发器
         CronTrigger cronTrigger = TriggerBuilder.newTrigger().withSchedule(scheduleBuilder).build();
         scheduler.scheduleJob(jobDetail, cronTrigger);
+
+        //任务
+        JobDataMap dataMap2 = new JobDataMap();
+        dataMap2.put("myService", myService.get(1));
+        JobDetail jobDetail2 = JobBuilder.newJob(ScheduledJob.class).setJobData(dataMap2).build();
+        CronScheduleBuilder scheduleBuilder2 = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
+        //触发器
+        CronTrigger cronTrigger2 = TriggerBuilder.newTrigger().withSchedule(scheduleBuilder2).build();
+        scheduler.scheduleJob(jobDetail2, cronTrigger2);
     }
 }
