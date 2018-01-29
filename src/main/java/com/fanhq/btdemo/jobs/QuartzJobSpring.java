@@ -1,6 +1,6 @@
 package com.fanhq.btdemo.jobs;
 
-import com.fanhq.btdemo.service.MyService;
+import com.fanhq.btdemo.service.impl.MyService1;
 import org.quartz.*;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
@@ -17,7 +17,7 @@ public class QuartzJobSpring extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         JobDataMap dataMap = jobExecutionContext.getJobDetail().getJobDataMap();
-        MyService myService = (MyService)dataMap.get("myService");
+        MyService1 myService = (MyService1)dataMap.get("myService");
         myService.sayHello();
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by Hachel on 2018/1/25
  */
@@ -17,7 +19,7 @@ public class MyScheduler {
     private SchedulerFactoryBean schedulerFactoryBean;
 
     @Autowired
-    private MyService myService;
+    private List<MyService> myService;
 
 
     public void scheduleJobs() throws SchedulerException {
@@ -29,7 +31,7 @@ public class MyScheduler {
     private void startJob(Scheduler scheduler) throws SchedulerException {
         //任务
         JobDataMap dataMap = new JobDataMap();
-        dataMap.put("myService", myService);
+        dataMap.put("myService", myService.get(0));
         JobDetail jobDetail = JobBuilder.newJob(ScheduledJob.class)
                 .withIdentity("job", "group").setJobData(dataMap).build();
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
