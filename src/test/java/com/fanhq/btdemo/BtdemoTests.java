@@ -1,6 +1,6 @@
 package com.fanhq.btdemo;
 
-import com.fanhq.btdemo.config.ProperiesConfig;
+import com.fanhq.btdemo.free.ProperiesConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

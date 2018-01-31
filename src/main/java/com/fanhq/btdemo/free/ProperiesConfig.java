@@ -1,6 +1,7 @@
-package com.fanhq.btdemo.config;
+package com.fanhq.btdemo.free;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(
         prefix = "myProp"
 )
+@Conditional({MyCondition.class})
 public class ProperiesConfig {
 
     private String name;

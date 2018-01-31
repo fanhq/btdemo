@@ -1,9 +1,13 @@
-package com.fanhq.btdemo.config;
+package com.fanhq.btdemo.free;
+
+import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Hachel on 2018/1/29
  */
-//@Component
+@Component
+@Conditional({MyCondition.class})
 public class MyConfig {
 
     private String filed1;
