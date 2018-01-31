@@ -12,10 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringJob1 {
 
+    private final String crond = "";
+
     @Autowired
     private MyService3 myService;
 
-    @Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = crond)
     public void job(){
         System.out.println("SpringJob1.....");
         myService.say();
