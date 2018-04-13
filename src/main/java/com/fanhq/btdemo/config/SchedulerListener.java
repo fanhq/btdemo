@@ -21,7 +21,7 @@ public class SchedulerListener implements ApplicationListener<ContextRefreshedEv
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         try {
-            myScheduler.scheduleJobs();
+           // myScheduler.scheduleJobs();
         } catch (Exception e) {
             e.printStackTrace();
         }
