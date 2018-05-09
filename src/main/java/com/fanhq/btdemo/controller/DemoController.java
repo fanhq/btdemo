@@ -2,10 +2,8 @@ package com.fanhq.btdemo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -19,16 +17,17 @@ public class DemoController {
 
     @RequestMapping(value = "hello")
     @ResponseBody
-    public String hello(@RequestParam("publicKey") String publicKey) {
-        System.out.println(publicKey);
-        try {
-            lock.lock();
-            TimeUnit.SECONDS.sleep(20);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            lock.unlock();
-        }
-        return "1";
+    public String hello(String key) {
+        System.out.println(key);
+        System.out.println("-----");
+        return "hi";
+    }
+
+    @RequestMapping(value = "update")
+    @ResponseBody
+    public String update(String key) {
+        System.out.println(key);
+        System.out.println("-----");
+        return "hi";
     }
 }
