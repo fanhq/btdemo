@@ -17,8 +17,9 @@ public class DemoController {
 
     @RequestMapping(value = "hello")
     @ResponseBody
-    public String hello(String key) {
+    public String hello(String key, String val) {
         System.out.println(key);
+        System.out.println(val);
         System.out.println("-----");
         return "hi";
     }
