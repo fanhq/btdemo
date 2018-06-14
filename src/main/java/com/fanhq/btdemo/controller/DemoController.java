@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class DemoController {
 
     private static ReentrantLock lock = new ReentrantLock();
-    /*
+    /* rtmp://localhost/应用/流地址
     流地址：rtmp://localhost/live/123343454366
      name：   123343454366
      pageUrl：   null
